@@ -4,16 +4,21 @@ import "os"
 import "path"
 
 func Home() string {
-  home := os.Getenv("HOME")
+	home := os.Getenv("HOME")
 
-  if home == "" { home = os.Getenv("USERPROFILE") }
-  if home == "" { home = os.Getenv("HOMEDRIVE")   }
-  if home == "" { home = os.Getenv("HOMEPATH")    }
+	if home == "" {
+		home = os.Getenv("USERPROFILE")
+	}
+	if home == "" {
+		home = os.Getenv("HOMEDRIVE")
+	}
+	if home == "" {
+		home = os.Getenv("HOMEPATH")
+	}
 
-  return home;
+	return home
 }
 
 func AuthorizedKeys() string {
-  return path.Join(Home(), ".ssh", "authorized_keys")
+	return path.Join(Home(), ".ssh", "authorized_keys")
 }
-
